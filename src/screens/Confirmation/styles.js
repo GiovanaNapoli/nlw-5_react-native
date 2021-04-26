@@ -1,7 +1,9 @@
 import styled from "styled-components/native";
-import { StyleSheet, Dimensions } from "react-native";
+
 import Constants from "expo-constants";
 import { Platform } from "react-native";
+
+import colors from "../../styles/colors";
 import fonts from "../../styles/fonts";
 
 const statusBarHeight =
@@ -9,33 +11,41 @@ const statusBarHeight =
 
 export const Container = styled.SafeAreaView`
   flex: 1;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: ${statusBarHeight}px;
 `;
 
 export const Wrapper = styled.View`
   flex: 1;
+  width: 100%;
   align-items: center;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: center;
+`;
+
+export const Emoji = styled.Text`
+  font-size: 78px;
 `;
 
 export const Title = styled.Text`
-  font-size: 28px;
-  font-weight: bold;
-  text-align: center;
-  color: #52665a;
+  font-size: 22px;
   font-family: ${fonts.heading};
-  line-height: 34px;
-  margin-top: ${statusBarHeight}px;
+  text-align: center;
+  color: ${colors.heading};
+  line-height: 38px;
+  margin-top: 15px;
 `;
 
 export const SubTitle = styled.Text`
-  text-align: center;
-  font-size: 16px;
-  padding: 20px;
-  color: #52665a;
+  font-size: 17px;
   font-family: ${fonts.text};
+  text-align: center;
+  color: ${colors.heading};
+  padding: 10px;
 `;
 
-export const Thumb = styled.Image`
-  height: ${Dimensions.get("window").width * 0.7}px;
+export const Footer = styled.View`
+  width: 100%;
+  padding: 50px;
+  margin-top: 20px;
 `;

@@ -1,31 +1,34 @@
-import React, { useState } from "react";
-import { StatusBar, Image } from "react-native";
-import { Container, Title, SubTitle } from "./styles";
-import { Button } from "../../components";
+import React from "react";
+import { StatusBar } from "react-native";
+import { Container, Title, SubTitle, Thumb, Wrapper } from "./styles";
+import { WelcomeButton } from "../../components";
 
 import wateringImg from "../../assets/watering.png";
+import { useNavigation } from "@react-navigation/core";
 
 export default function Welcome() {
-  const [visible, setVisible] = useState(false);
+  const navigation = useNavigation()
 
-  function handleVisibility() {
-    setVisible(true);
+  function handleStart(){
+    navigation.navigate('UserIdentification')
   }
 
   return (
     <Container>
       <StatusBar backgroundColor={"#fff"} translucent />
-      <Title>
-        Gerencie {"\n"}
-        suas plantas {"\n"}
-        de forma fácil
-      </Title>
-      {visible && <Image source={wateringImg} />}
-      <SubTitle>
-        Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
-        sempre que precisar.
-      </SubTitle>
-      <Button title="Ir" />
+      <Wrapper>
+        <Title>
+          Gerencie {"\n"}
+          suas plantas de {"\n"}
+          forma fácil
+        </Title>
+        <Thumb source={wateringImg} resizeMode="contain" />
+        <SubTitle>
+          Não esqueça mais de regar suas plantas. Nós cuidamos de lembrar você
+          sempre que precisar.
+        </SubTitle>
+        <WelcomeButton title="Ir" onPress={handleStart} />
+      </Wrapper>
     </Container>
   );
 }
